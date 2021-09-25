@@ -1,0 +1,65 @@
+{
+  "name": "@haochuan9421/urm",
+  "version": "1.0.0",
+  "description": "Universal Registry Manager, manage npm and yarn registry easily.",
+  "private": false,
+  "main": "lib/index.js",
+  "bin": {
+    "urm": "cli/index.js"
+  },
+  "files": [
+    "postinstall.js",
+    "cli/",
+    "lib/"
+  ],
+  "scripts": {
+    "postinstall": "husky install",
+    "prepublishOnly": "node postinstall.js --enable",
+    "postpublish": "node postinstall.js --disable"
+  },
+  "dependencies": {
+    "async": "^3.2.1",
+    "chalk": "^4.1.2",
+    "commander": "^8.2.0",
+    "console-table-printer": "^2.10.0",
+    "ini": "^2.0.0",
+    "inquirer": "^8.1.5",
+    "npm": "^7.24.0",
+    "npm-registry-fetch": "^11.0.0",
+    "ora": "^5.4.1",
+    "update-notifier": "^5.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^7.0.2",
+    "lint-staged": "^11.1.2",
+    "prettier": "^2.4.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:HaoChuan9421/urm.git"
+  },
+  "author": "HaoChuan9421 <hc199421@gmail.com>",
+  "keywords": [
+    "urm",
+    "@haochuan9421/urm",
+    "nrm",
+    "yrm",
+    "ynrm",
+    "nyrm",
+    "registry"
+  ],
+  "bugs": {
+    "url": "https://github.com/HaoChuan9421/urm/issues"
+  },
+  "homepage": "https://github.com/HaoChuan9421/urm",
+  "engines": {
+    "node": ">=12"
+  },
+  "lint-staged": {
+    "*.js": "eslint --fix"
+  },
+  "license": "MIT"
+}
