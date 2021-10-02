@@ -5,7 +5,7 @@ const { getPmConfig } = require("../../lib/pm-config/index");
 
 // 清空 registry 配置
 module.exports = (program) => {
-  const pmConfig = getPmConfig(program);
+  const pmConfig = getPmConfig(program.opts().mode);
 
   return program
     .command("clear")

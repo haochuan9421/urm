@@ -5,7 +5,7 @@ const { getPmConfig } = require("../../lib/pm-config/index");
 
 // 以表格的形式列出当前的 npm registry 配置
 module.exports = (program) => {
-  const pmConfig = getPmConfig(program);
+  const pmConfig = getPmConfig(program.opts().mode);
 
   program
     .command("current", { isDefault: true })

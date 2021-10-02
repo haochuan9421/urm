@@ -7,7 +7,7 @@ const { getAvailableRegistries } = require("../../lib/utils");
 
 // 设置 registry
 module.exports = (program) => {
-  const pmConfig = getPmConfig(program);
+  const pmConfig = getPmConfig(program.opts().mode);
 
   program
     .command("set")

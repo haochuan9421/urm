@@ -5,7 +5,7 @@ const { getPmConfig } = require("../../lib/pm-config");
 
 // 删除 registry 配置
 module.exports = (program) => {
-  const pmConfig = getPmConfig(program);
+  const pmConfig = getPmConfig(program.opts().mode);
 
   return program
     .command("unset")
