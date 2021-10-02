@@ -21,12 +21,8 @@ yarn global add @haochuan9421/urm
 $ urm
 # follow the prompts to set registry
 $ urm set
-# use taobao registry and save the config file to user root directory
-$ urm set taobao '' user
-# use taobao registry as yarn's default registry
-$ urm set taobao '' user -m yarn
-# use tencent registry in '@tx' scope and save the config file to current project
-$ urm set tencent @tx project
+# use taobao registry in "@antd" scope and save the config file to current project
+$ urm set taobao --scope @antd --where project
 # follow the prompts to unset registry
 $ urm unset
 ```
@@ -37,30 +33,30 @@ $ urm unset
 Usage: urm [options] [command]
 
 Options:
-  -m, --mode <name>               work mode of 'urm' (choices: "npm", "yarn", "yarn2", default: npm)
-  -v, --version                   output the version number
-  -h, --help                      display help for command
+  -m, --mode <name>         work mode of 'urm' (choices: "npm", "yarn", "yarn2", default: npm)
+  -v, --version             output the version number
+  -h, --help                display help for command
 
 Commands:
-  current|cur                     show current registry config of the package manager
-  set|use [name] [scope] [where]  set registry of the package manager (choices of where: "project", "user", "global")
-  unset|unuse                     unset registry of the package manager
-  clear                           clear all registry config of the package manager
-  mode [name]                     set the default work mode of 'urm', current is npm
-  list|ls                         show available registry list
-                                  ----------------------------------------------------------------------------------------
-                                  Sub Commands Of List:
-                                  add [name] [registry]  add new registry
-                                  del [name]             delete registry
-                                  ping [name]            test speed of the named registry, or test all if no name supplied
-                                  restore                restore registry list to default
-                                  help [command]         display help for command
-
-                                  Examples:
-                                  $ urm list add huawei https://repo.huaweicloud.com/repository/npm/
-                                  $ urm list ping
-                                  ----------------------------------------------------------------------------------------
-  help [command]                  display help for command
+  current|cur               show current registry config of the package manager
+  set|use [options] [name]  set registry of the package manager
+  unset|unuse               unset registry of the package manager
+  clear                     clear all registry config of the package manager
+  mode [name]               set the default work mode of 'urm', current is npm
+  list|ls                   show available registry list
+                            ----------------------------------------------------------------------------------------
+                            Sub Commands Of List:
+                            add [name] [registry]  add new registry
+                            del [name]             delete registry
+                            ping [name]            test speed of the named registry, or test all if no name supplied
+                            restore                restore registry list to default
+                            help [command]         display help for command
+  
+                            Examples:
+                            $ urm list add huawei https://repo.huaweicloud.com/repository/npm/
+                            $ urm list ping
+                            ----------------------------------------------------------------------------------------
+  help [command]            display help for command
 ```
 
 ### Programmatic

@@ -1,6 +1,6 @@
 const chalk = require("chalk");
 const inquirer = require("inquirer");
-const { Argument } = require("commander");
+const { Argument, Option } = require("commander");
 
 const { getPmConfig } = require("../../lib/pm-config/index");
 const { getAvailableRegistries } = require("../../lib/utils");
@@ -13,10 +13,10 @@ module.exports = (program) => {
     .command("set")
     .alias("use")
     .addArgument(new Argument("[name]", "specify a named registry to use"))
-    .addArgument(new Argument("[scope]", "specify the scope of the registry"))
-    .addArgument(new Argument("[where]", "where to save the registry config").choices(pmConfig.configFileTypes))
-    .description(`set registry of the package manager (choices of where: ${pmConfig.configFileTypes.map((v) => `"${v}"`).join(", ")})`)
-    .action(async (name, scope, where) => {
+    .addOption(new Option("-s --scope <scope>", "specify the scope of the registry"))
+    .addOption(new Option("-w --where <where>", "where to save the registry config").choices(pmConfig.configFileTypes))
+    .description(`set registry of the package manager`)
+    .action(async (name, { scope, where }) => {
       try {
         const availableRegistries = getAvailableRegistries();
         if (!availableRegistries.length) {

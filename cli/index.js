@@ -92,12 +92,14 @@ urmProgram.addHelpText(
   "after",
   `
 ${"Examples:"}
-${chalk.gray("$")} ${"urm"}                            ${chalk.gray("# show current registry config")}
-${chalk.gray("$")} ${"urm set"}                        ${chalk.gray("# follow the prompts to set registry")}
-${chalk.gray("$")} ${"urm set taobao '' user"}         ${chalk.gray("# use taobao registry and save the config file to user root directory")}
-${chalk.gray("$")} ${"urm set taobao '' user -m yarn"} ${chalk.gray("# use taobao registry as yarn's default registry")}
-${chalk.gray("$")} ${"urm set tencent @tx project"}    ${chalk.gray("# use tencent registry in '@tx' scope and save the config file to current project")}
-${chalk.gray("$")} ${"urm unset"}                      ${chalk.gray("# follow the prompts to unset registry")}
+${chalk.gray("# show current registry config")}
+${chalk.gray("$")} ${"urm"}
+${chalk.gray("# follow the prompts to set registry")}
+${chalk.gray("$")} ${"urm set"}
+${chalk.gray('# use taobao registry in "@antd" scope and save the config file to current project')}
+${chalk.gray("$")} ${"urm set taobao --scope @antd --where project"}
+${chalk.gray("# follow the prompts to unset registry")}
+${chalk.gray("$")} ${"urm unset"}
 
 ${chalk.blue(`learn more: ${chalk.underline("https://github.com/HaoChuan9421/urm")}`)}`
 );

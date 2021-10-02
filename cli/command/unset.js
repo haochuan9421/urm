@@ -18,7 +18,7 @@ module.exports = (program) => {
           console.log(
             chalk.yellow(
               `the current registry config is not from ${chalk.cyan("config file")}, 'urm' can't remove it.
-run ${chalk.green("'urm set'")} and select a new one may override it.`
+run ${chalk.green("'urm set'")} and select a new registry may override it.`
             )
           );
           await pmConfig.printCurRegistriesTable();
