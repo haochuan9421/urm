@@ -46,7 +46,7 @@ module.exports = (program) =>
         if (answers.continueWhenSameName !== false && answers.continueWhenInvalidUrl !== false) {
           name = answers.name || name;
           registry = answers.registry || registry;
-          registry = registry[registry.length - 1] === "/" ? registry : `${registry}/`;
+          registry = new URL(registry).href;
 
           const urmConfig = getUrmConfig();
           urmConfig.customRegistries = {
