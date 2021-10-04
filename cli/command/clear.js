@@ -1,5 +1,6 @@
 const chalk = require("chalk");
 const inquirer = require("inquirer");
+const { Option } = require("commander");
 
 const { getPmConfig } = require("../../lib/pm-config/index");
 
@@ -10,7 +11,8 @@ module.exports = (program) => {
   return program
     .command("clear")
     .description("clear all registry config of the package manager")
-    .action(async () => {
+    .addOption(new Option("-y --yes", "skip prompt and clear"))
+    .action(async ({ yes }) => {
       try {
         const registries = await pmConfig.getRemovableRegistries();
         if (!registries.length) {
@@ -30,10 +32,11 @@ run ${chalk.green("'urm set'")} and select a new registry may override it.`
             message: "are you sure you want to clear all registry config",
             name: "clear",
             default: true,
+            when: !yes,
           },
         ]);
 
-        if (clear) {
+        if (yes || clear) {
           await pmConfig.clearRegistry();
           console.log(chalk.green(`\n🎉 clear successfully 🎉\n`));
           await pmConfig.printCurRegistriesTable();
