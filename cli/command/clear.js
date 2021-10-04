@@ -1,4 +1,3 @@
-const chalk = require("chalk");
 const inquirer = require("inquirer");
 const { Option } = require("commander");
 
@@ -8,19 +7,14 @@ const { getPmConfig } = require("../../lib/pm-config/index");
 module.exports = (program) => {
   return program
     .command("clear")
-    .description("clear all registry config of the package manager")
-    .addOption(new Option("-y --yes", "skip prompt and clear"))
+    .description(i18n.A009)
+    .addOption(new Option("-y --yes", i18n.A010))
     .action(async ({ yes }) => {
       try {
         const pmConfig = getPmConfig(program.opts().mode);
         const registries = await pmConfig.getRemovableRegistries();
         if (!registries.length) {
-          console.log(
-            chalk.yellow(
-              `the current registry config is not from ${chalk.cyan("config file")}, 'urm' can't remove it.
-run ${chalk.green("'urm set'")} and select a new registry may override it.`
-            )
-          );
+          console.log(i18n.A011);
           await pmConfig.printCurRegistriesTable();
           return;
         }
@@ -28,7 +22,7 @@ run ${chalk.green("'urm set'")} and select a new registry may override it.`
         const { clear } = await inquirer.prompt([
           {
             type: "confirm",
-            message: "are you sure you want to clear all registry config",
+            message: i18n.A012,
             name: "clear",
             default: true,
             when: !yes,
@@ -37,11 +31,11 @@ run ${chalk.green("'urm set'")} and select a new registry may override it.`
 
         if (yes || clear) {
           await pmConfig.clearRegistry();
-          console.log(chalk.green(`\n🎉 clear successfully 🎉\n`));
+          console.log(i18n.A013);
           await pmConfig.printCurRegistriesTable();
         }
       } catch (error) {
-        console.log(chalk.red("failed to clear registry"), error);
+        console.log(i18n.A014, error);
       }
     });
 };

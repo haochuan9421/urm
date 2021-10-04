@@ -3,7 +3,7 @@
 const chalk = require("chalk");
 const { Command, Option } = require("commander");
 const updateNotifier = require("update-notifier");
-
+require("../locales");
 const pkg = require("../package.json");
 const { urmModes } = require("../lib/const");
 const { getUrmDefaultMode } = require("../lib/utils");
@@ -20,14 +20,14 @@ const urmProgram = new Command("urm");
 urmProgram.addOption(
   (() => {
     const defaultMode = getUrmDefaultMode();
-    const modeOpt = new Option("-m, --mode <name>", "work mode of 'urm'");
+    const modeOpt = new Option("-m, --mode <name>", i18n.A001);
     modeOpt.choices(urmModes);
     modeOpt.default(defaultMode, chalk.green.bold(defaultMode));
     return modeOpt;
   })()
 );
 
-urmProgram.version(pkg.version, "-v, --version");
+urmProgram.version(pkg.version, "-v, --version", i18n.A002);
 
 // 注册命令
 require("./command/current")(urmProgram);
@@ -79,9 +79,9 @@ urmProgram.configureHelp({
 
     return `${cmd.description()}
 ${padStart}${"-".repeat(maxLineLen)}
-${padStart}${"Sub Commands Of List:"}
+${padStart}${i18n.A003}
 ${listSubCommandsHelp}
-${padStart}${"Examples:"}
+${padStart}${i18n.A004}
 ${padStart}${chalk.gray("$")} ${"urm list add huawei https://repo.huaweicloud.com/repository/npm/"}
 ${padStart}${chalk.gray("$")} ${"urm list ping"}
 ${padStart}${"-".repeat(maxLineLen)}`;
@@ -91,14 +91,14 @@ ${padStart}${"-".repeat(maxLineLen)}`;
 urmProgram.addHelpText(
   "after",
   `
-${"Examples:"}
-${chalk.gray("# show current registry config")}
+${i18n.A004}
+${chalk.gray(`# ${i18n.A005}`)}
 ${chalk.gray("$")} ${"urm"}
-${chalk.gray("# follow the prompts to set registry")}
+${chalk.gray(`# ${i18n.A006}`)}
 ${chalk.gray("$")} ${"urm set"}
-${chalk.gray('# use taobao registry in "@antd" scope and save the config file to current project')}
+${chalk.gray(`# ${i18n.A007}`)}
 ${chalk.gray("$")} ${"urm set taobao --scope @antd --where project"}
-${chalk.gray("# follow the prompts to unset registry")}
+${chalk.gray(`# ${i18n.A008}`)}
 ${chalk.gray("$")} ${"urm unset"}
 
 ${chalk.blue(`learn more: ${chalk.underline("https://github.com/HaoChuan9421/urm")}`)}`

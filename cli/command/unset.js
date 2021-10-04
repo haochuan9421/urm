@@ -1,4 +1,3 @@
-const chalk = require("chalk");
 const inquirer = require("inquirer");
 
 const { getPmConfig } = require("../../lib/pm-config");
@@ -8,18 +7,13 @@ module.exports = (program) => {
   return program
     .command("unset")
     .alias("unuse")
-    .description("unset registry of the package manager")
+    .description(i18n.A031)
     .action(async () => {
       try {
         const pmConfig = getPmConfig(program.opts().mode);
         const registries = await pmConfig.getRemovableRegistries();
         if (!registries.length) {
-          console.log(
-            chalk.yellow(
-              `the current registry config is not from ${chalk.cyan("config file")}, 'urm' can't remove it.
-run ${chalk.green("'urm set'")} and select a new registry may override it.`
-            )
-          );
+          console.log(i18n.A011);
           await pmConfig.printCurRegistriesTable();
           return;
         }
@@ -29,7 +23,7 @@ run ${chalk.green("'urm set'")} and select a new registry may override it.`
         } = await inquirer.prompt([
           {
             type: "list",
-            message: "which registry do you want to remove",
+            message: i18n.A032,
             choices: () => {
               const maxRegistryLen = Math.max(...registries.map(({ registry }) => registry.length));
               const maxScopeLen = Math.max(...registries.map(({ scope }) => scope.length));
@@ -46,10 +40,10 @@ run ${chalk.green("'urm set'")} and select a new registry may override it.`
         ]);
 
         await pmConfig.delRegistry(scope, where);
-        console.log(chalk.green(`\n🎉 unset successfully 🎉\n`));
+        console.log(i18n.A033);
         await pmConfig.printCurRegistriesTable();
       } catch (error) {
-        console.log(chalk.red("failed to remove the registry config"), error);
+        console.log(i18n.A034, error);
       }
     });
 };

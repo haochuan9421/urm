@@ -1,4 +1,3 @@
-const chalk = require("chalk");
 const { printAvailableRegistriesTable } = require("../../../../lib/utils");
 
 // 以表格的形式列出所有可选的 registry
@@ -12,7 +11,7 @@ module.exports = (program) => {
       try {
         printAvailableRegistriesTable();
       } catch (error) {
-        console.log(chalk.red("failed to display registry list"), error);
+        console.log(i18n.A052, error);
       }
     });
 };

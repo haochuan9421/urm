@@ -8,14 +8,14 @@ module.exports = (program) => {
   program
     .command("current", { isDefault: true })
     .alias("cur")
-    .description("show current registry config of the package manager")
+    .description(i18n.A015)
     .action(async () => {
       try {
         const pmConfig = getPmConfig(program.opts().mode);
         const curRegistries = await pmConfig.printCurRegistriesTable();
         printAvailableRegistriesTable(curRegistries);
       } catch (error) {
-        console.log(chalk.red("failed to display current registry config"), error);
+        console.log(chalk.red(i18n.A016), error);
       }
     });
 };

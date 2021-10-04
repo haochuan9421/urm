@@ -1,4 +1,3 @@
-const chalk = require("chalk");
 const inquirer = require("inquirer");
 const { getUrmConfig, setUrmConfig, isValidHttpUrl, getAvailableRegistries, printAvailableRegistriesTable } = require("../../../../lib/utils");
 
@@ -6,9 +5,9 @@ const { getUrmConfig, setUrmConfig, isValidHttpUrl, getAvailableRegistries, prin
 module.exports = (program) =>
   program
     .command("add")
-    .argument("[name]", "name of the registry")
-    .argument("[registry]", "registry url")
-    .description("add new registry")
+    .argument("[name]", i18n.A036)
+    .argument("[registry]", i18n.A037)
+    .description(i18n.A038)
     .action(async (name, registry) => {
       try {
         const availableRegistries = getAvailableRegistries();
@@ -16,27 +15,27 @@ module.exports = (program) =>
           {
             name: "name",
             type: "input",
-            message: "input the name of the registry",
+            message: i18n.A039,
             when: !name,
-            validate: (value) => (value ? true : "registry name is required"),
+            validate: (value) => (value ? true : i18n.A040),
           },
           {
             name: "registry",
             type: "input",
-            message: "input the url of the registry",
+            message: i18n.A041,
             when: !registry,
-            validate: (value) => (value ? true : "registry url is required"),
+            validate: (value) => (value ? true : i18n.A042),
           },
           {
             type: "confirm",
-            message: (answers) => `${name || answers.name} already exists, Do you want to continue?`,
+            message: (answers) => i18n.A043(name || answers.name),
             name: "continueWhenSameName",
             default: false,
             when: (answers) => availableRegistries.some((availableRegistry) => availableRegistry.name === (name || answers.name)),
           },
           {
             type: "confirm",
-            message: "your registry url looks like not a valid http url, Do you want to continue?",
+            message: i18n.A044,
             name: "continueWhenInvalidUrl",
             default: false,
             when: (answers) => answers.continueWhenSameName !== false && !isValidHttpUrl(registry || answers.registry),
@@ -56,10 +55,10 @@ module.exports = (program) =>
             },
           };
           setUrmConfig(urmConfig);
-          console.log(chalk.green(`\n🎉 add successfully 🎉\n`));
+          console.log(i18n.A045);
           printAvailableRegistriesTable();
         }
       } catch (error) {
-        console.log(chalk.red("failed to add registry"), error);
+        console.log(i18n.A046, error);
       }
     });

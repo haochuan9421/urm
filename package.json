@@ -34,6 +34,7 @@
     "npm": "^7.24.0",
     "npm-registry-fetch": "^11.0.0",
     "ora": "^5.4.1",
+    "os-locale": "5",
     "update-notifier": "^5.1.0"
   },
   "devDependencies": {

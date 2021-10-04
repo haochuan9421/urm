@@ -1,4 +1,3 @@
-const chalk = require("chalk");
 const inquirer = require("inquirer");
 const { Argument, Option } = require("commander");
 
@@ -10,16 +9,16 @@ module.exports = (program) => {
   program
     .command("set")
     .alias("use")
-    .addArgument(new Argument("[name]", "specify a named registry to use"))
-    .addOption(new Option("-s --scope <scope>", "specify the scope of the registry"))
-    .addOption(new Option("-w --where <where>", "where to save the registry config"))
-    .description(`set registry of the package manager`)
+    .addArgument(new Argument("[name]", i18n.A021))
+    .addOption(new Option("-s --scope <scope>", i18n.A022))
+    .addOption(new Option("-w --where <where>", i18n.A023))
+    .description(i18n.A024)
     .action(async (name, { scope, where }) => {
       try {
         const pmConfig = getPmConfig(program.opts().mode);
         const availableRegistries = getAvailableRegistries();
         if (!availableRegistries.length) {
-          console.log(chalk.yellow(`no registry available, use ${chalk.green("'urm list restore'")} to restore registry list to default`));
+          console.log(i18n.A025);
           return;
         }
 
@@ -27,7 +26,7 @@ module.exports = (program) => {
         const answers = await inquirer.prompt([
           {
             type: "list",
-            message: "which registry do you want to use",
+            message: i18n.A026,
             choices: () => {
               const maxNameLen = Math.max(...availableRegistries.map(({ name }) => name.length));
               return availableRegistries.map(({ name, registry }) => ({
@@ -44,13 +43,13 @@ module.exports = (program) => {
           },
           {
             type: "input",
-            message: "input a scope to use the registry (eg: @myscope), or keep empty to use as default registry:",
+            message: i18n.A027,
             name: "scope",
             when: scope === undefined,
           },
           {
             type: "list",
-            message: "where do you prefer to save the npm registry config",
+            message: i18n.A028,
             choices: pmConfig.configFileTypes.map((whereType) => {
               const wherePath = configFiles.find((file) => file.type === whereType).path;
               return {
@@ -68,10 +67,10 @@ module.exports = (program) => {
 
         const value = availableRegistries.find((availableRegistry) => availableRegistry.name === name).registry;
         await pmConfig.setRegistry(scope, value, where);
-        console.log(chalk.green(`\n🎉 set successfully 🎉\n`));
+        console.log(i18n.A029);
         await pmConfig.printCurRegistriesTable();
       } catch (error) {
-        console.log(chalk.red("failed to set registry"), error);
+        console.log(i18n.A030, error);
       }
     });
 };

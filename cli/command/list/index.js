@@ -2,7 +2,7 @@ const { Command } = require("commander");
 
 module.exports = function (program) {
   const listProgram = new Command("list");
-  listProgram.alias("ls").description("show available registry list");
+  listProgram.alias("ls").description(i18n.A035);
   require("./command/list")(listProgram);
   require("./command/add")(listProgram);
   require("./command/del")(listProgram);

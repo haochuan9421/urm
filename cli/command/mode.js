@@ -1,4 +1,3 @@
-const chalk = require("chalk");
 const inquirer = require("inquirer");
 const { Argument } = require("commander");
 
@@ -13,13 +12,13 @@ module.exports = (program) => {
   return program
     .command("mode")
     .addArgument(new Argument("[name]", "mode name").choices(urmModes))
-    .description(`set the default work mode of 'urm', current is ${chalk.green.bold(defaultMode)}`)
+    .description(i18n.A017(defaultMode))
     .action(async (name) => {
       try {
         const answers = await inquirer.prompt([
           {
             type: "list",
-            message: "select the default work mode of 'urm'",
+            message: i18n.A018,
             choices: urmModes,
             name: "name",
             default: defaultMode,
@@ -29,9 +28,9 @@ module.exports = (program) => {
 
         urmConfig.mode = answers.name || name;
         setUrmConfig(urmConfig);
-        console.log(chalk.green(`\n🎉 switch successfully 🎉\n`));
+        console.log(i18n.A019);
       } catch (error) {
-        console.log(chalk.red("failed to change the default work mode"), error);
+        console.log(i18n.A020, error);
       }
     });
 };

@@ -6,20 +6,20 @@ const { getUrmConfig, setUrmConfig, getAvailableRegistries, printAvailableRegist
 module.exports = (program) =>
   program
     .command("del")
-    .argument("[name]", "name of the registry")
-    .description("delete registry")
+    .argument("[name]", i18n.A036)
+    .description(i18n.A047)
     .action(async (name) => {
       try {
         const availableRegistries = getAvailableRegistries();
         if (!availableRegistries.length) {
-          console.log(chalk.yellow("no registry available"));
+          console.log(chalk.yellow(i18n.A048));
           return;
         }
 
         const answers = await inquirer.prompt([
           {
             type: "list",
-            message: "which registry do you want to delete",
+            message: i18n.A049,
             choices: () => {
               const maxNameLen = Math.max(...availableRegistries.map(({ name }) => name.length));
 
@@ -42,9 +42,9 @@ module.exports = (program) =>
           delete urmConfig.customRegistries[name];
         }
         setUrmConfig(urmConfig);
-        console.log(chalk.green(`\n🎉 delete successfully 🎉\n`));
+        console.log(i18n.A050);
         printAvailableRegistriesTable();
       } catch (error) {
-        console.log(chalk.red("failed to delete registry"), error);
+        console.log(i18n.A051, error);
       }
     });

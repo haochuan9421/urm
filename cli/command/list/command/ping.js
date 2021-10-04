@@ -1,5 +1,4 @@
 const ora = require("ora");
-const chalk = require("chalk");
 const { eachSeries } = require("async");
 const npmFetch = require("npm-registry-fetch");
 
@@ -9,8 +8,8 @@ const { isValidHttpUrl, getAvailableRegistries } = require("../../../../lib/util
 module.exports = (program) =>
   program
     .command("ping")
-    .argument("[name]", "registry name")
-    .description("test speed of the named registry, or test all if no name supplied")
+    .argument("[name]", i18n.A036)
+    .description(i18n.A053)
     .action(async (name) => {
       try {
         let registries = getAvailableRegistries();
@@ -48,11 +47,11 @@ module.exports = (program) =>
               })
               .finally(next);
           } else {
-            spinner.fail(`${spinnerText} invalid registry`);
+            spinner.fail(`${spinnerText} ${i18n.A054}`);
             next();
           }
         });
       } catch (error) {
-        console.log(chalk.red("failed to test the registry speed"), error);
+        console.log(i18n.A055, error);
       }
     });
