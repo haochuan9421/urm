@@ -24,7 +24,7 @@ module.exports = (program) => {
           return;
         }
 
-        const configFilesPaths = await pmConfig.getConfigFilePaths();
+        const configFiles = await pmConfig.getConfigFiles();
         const answers = await inquirer.prompt([
           {
             type: "list",
@@ -52,10 +52,13 @@ module.exports = (program) => {
           {
             type: "list",
             message: "where do you prefer to save the npm registry config",
-            choices: pmConfig.configFileTypes.map((fileType) => ({
-              name: `${fileType} (${configFilesPaths[fileType]})`,
-              value: fileType,
-            })),
+            choices: pmConfig.configFileTypes.map((whereType) => {
+              const wherePath = configFiles.find((file) => file.type === whereType).path;
+              return {
+                name: `${whereType} (${wherePath})`,
+                value: { whereType, wherePath },
+              };
+            }),
             name: "where",
             when: !where,
           },

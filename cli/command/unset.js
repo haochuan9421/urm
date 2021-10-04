@@ -37,7 +37,7 @@ run ${chalk.green("'urm set'")} and select a new registry may override it.`
 
               return registries.map(({ scope, registry, where }) => {
                 return {
-                  name: `${registry.padEnd(maxRegistryLen)} | scope: ${scope.padEnd(maxScopeLen)} | where: ${where}`,
+                  name: `${registry.padEnd(maxRegistryLen)} | scope: ${scope.padEnd(maxScopeLen)} | where: ${where.wherePath}`,
                   value: { scope, registry, where },
                 };
               });
