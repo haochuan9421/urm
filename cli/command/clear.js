@@ -6,14 +6,13 @@ const { getPmConfig } = require("../../lib/pm-config/index");
 
 // 清空 registry 配置
 module.exports = (program) => {
-  const pmConfig = getPmConfig(program.opts().mode);
-
   return program
     .command("clear")
     .description("clear all registry config of the package manager")
     .addOption(new Option("-y --yes", "skip prompt and clear"))
     .action(async ({ yes }) => {
       try {
+        const pmConfig = getPmConfig(program.opts().mode);
         const registries = await pmConfig.getRemovableRegistries();
         if (!registries.length) {
           console.log(

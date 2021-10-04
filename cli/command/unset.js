@@ -5,14 +5,13 @@ const { getPmConfig } = require("../../lib/pm-config");
 
 // 删除 registry 配置
 module.exports = (program) => {
-  const pmConfig = getPmConfig(program.opts().mode);
-
   return program
     .command("unset")
     .alias("unuse")
     .description("unset registry of the package manager")
     .action(async () => {
       try {
+        const pmConfig = getPmConfig(program.opts().mode);
         const registries = await pmConfig.getRemovableRegistries();
         if (!registries.length) {
           console.log(

@@ -7,17 +7,16 @@ const { getAvailableRegistries } = require("../../lib/utils");
 
 // 设置 registry
 module.exports = (program) => {
-  const pmConfig = getPmConfig(program.opts().mode);
-
   program
     .command("set")
     .alias("use")
     .addArgument(new Argument("[name]", "specify a named registry to use"))
     .addOption(new Option("-s --scope <scope>", "specify the scope of the registry"))
-    .addOption(new Option("-w --where <where>", "where to save the registry config").choices(pmConfig.configFileTypes))
+    .addOption(new Option("-w --where <where>", "where to save the registry config"))
     .description(`set registry of the package manager`)
     .action(async (name, { scope, where }) => {
       try {
+        const pmConfig = getPmConfig(program.opts().mode);
         const availableRegistries = getAvailableRegistries();
         if (!availableRegistries.length) {
           console.log(chalk.yellow(`no registry available, use ${chalk.green("'urm list restore'")} to restore registry list to default`));
@@ -60,7 +59,7 @@ module.exports = (program) => {
               };
             }),
             name: "where",
-            when: !where,
+            when: !where || pmConfig.configFileTypes.indexOf(where) === -1,
           },
         ]);
         name = answers.name || name;

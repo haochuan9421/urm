@@ -104,4 +104,4 @@ ${chalk.gray("$")} ${"urm unset"}
 ${chalk.blue(`learn more: ${chalk.underline("https://github.com/HaoChuan9421/urm")}`)}`
 );
 
-urmProgram.parse(process.argv);
+urmProgram.parseAsync(process.argv);
