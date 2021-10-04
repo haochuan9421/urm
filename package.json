@@ -21,6 +21,7 @@
     "@yarnpkg/cli": "^3.1.0-rc.8",
     "@yarnpkg/core": "^3.1.0-rc.9",
     "@yarnpkg/fslib": "^2.6.0-rc.8",
+    "@yarnpkg/lockfile": "^1.1.0",
     "@yarnpkg/parsers": "^2.4.1-rc.8",
     "async": "^3.2.1",
     "chalk": "^4.1.2",
