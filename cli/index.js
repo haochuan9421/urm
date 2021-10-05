@@ -97,7 +97,7 @@ ${chalk.gray("$")} ${"urm"}
 ${chalk.gray(`# ${i18n.A006}`)}
 ${chalk.gray("$")} ${"urm set"}
 ${chalk.gray(`# ${i18n.A007}`)}
-${chalk.gray("$")} ${"urm set taobao --scope @antd --where project"}
+${chalk.gray("$")} ${"urm set taobao --scope @vant --where project"}
 ${chalk.gray(`# ${i18n.A008}`)}
 ${chalk.gray("$")} ${"urm unset"}
 

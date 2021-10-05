@@ -7,7 +7,7 @@ module.exports = {
   A004: `示例:`,
   A005: `显示当前的 registry 配置`,
   A006: `根据提示设置 registry 配置`,
-  A007: `在安装 scope 为 "@antd" 的包时使用 taobao registry，并把配置文件保存到当前项目`,
+  A007: `在安装 scope 为 "@vant" 的包时使用 taobao registry，并把配置文件保存到当前项目`,
   A008: `根据提示删除 registry`,
 
   A009: `清除包管理器的全部 registry 配置`,
@@ -17,7 +17,7 @@ module.exports = {
   A013: chalk.green(`\n清除成功\n`),
   A014: chalk.red(`清除失败`),
 
-  A015: `查看包管理当前的 registry 配置`,
+  A015: `查看包管理器当前的 registry 配置`,
   A016: `无法查询当前的 registry 配置`,
 
   A017: (defaultMode) => `设置 "urm" 的默认工作模式, 当前的模式是 ${chalk.green.bold(defaultMode)}`,

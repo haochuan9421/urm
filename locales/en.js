@@ -7,7 +7,7 @@ module.exports = {
   A004: `Examples:`,
   A005: `show current registry config`,
   A006: `follow the prompts to set registry`,
-  A007: `use taobao registry in "@antd" scope and save the config file to current project`,
+  A007: `use taobao registry in "@vant" scope and save the config file to current project`,
   A008: `follow the prompts to unset registry`,
 
   A009: `clear all registry config of the package manager`,
