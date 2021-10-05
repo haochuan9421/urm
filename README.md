@@ -11,8 +11,8 @@
     <a href="https://github.com/HaoChuan9421/urm/blob/master/LICENSE" target="_blank"><img src="https://img.shields.io/npm/l/@haochuan9421/urm.svg?style=flat-square" alt="License"></a>
 </p>
 
-[简体中文](https://github.com/HaoChuan9421/urm/blob/master/docs/README.md)&emsp;
-[English](https://github.com/HaoChuan9421/urm/blob/master/docs/README_EN.md)&emsp;
+[简体中文](https://github.com/HaoChuan9421/urm/blob/master/README.md)&emsp;
+[English](https://github.com/HaoChuan9421/urm/blob/master/README_EN.md)&emsp;
 
 ## 环境要求
 
@@ -73,7 +73,7 @@ urm use taobao --scope @vant --where project
 urm use taobao -s @vant -w project
 ```
 
-<img width="450" alt="use" src="https://user-images.githubusercontent.com/5093611/135975218-125a9ee9-a49b-4a07-b79b-54cd0ab88011.png">
+<img width="550" alt="use" src="https://user-images.githubusercontent.com/5093611/135975218-125a9ee9-a49b-4a07-b79b-54cd0ab88011.png">
 
 #### 删除配置
 
@@ -86,7 +86,7 @@ urm unuse
 urm unset
 ```
 
-<img width="500" alt="unuse" src="https://user-images.githubusercontent.com/5093611/135975327-84e70dbe-8b3b-4553-976f-9ffe204ec614.png">
+<img width="550" alt="unuse" src="https://user-images.githubusercontent.com/5093611/135975327-84e70dbe-8b3b-4553-976f-9ffe204ec614.png">
 
 - 一次性清空
 
@@ -145,7 +145,7 @@ urm list add
 urm list add youzan https://npm.youzan.com/
 ```
 
-<img width="300" alt="unuse" src="https://user-images.githubusercontent.com/5093611/135975550-3110def9-d7ec-494a-9ed8-5ede161313ab.png">
+<img width="400" alt="unuse" src="https://user-images.githubusercontent.com/5093611/135975550-3110def9-d7ec-494a-9ed8-5ede161313ab.png">
 
 #### 删除 registry
 
