@@ -99,7 +99,7 @@ urm clear -yes
 urm clear -y
 ```
 
-#### Toogle work mode
+#### Switch work mode
 
 - Temporary switch
 
@@ -190,20 +190,20 @@ yarn add @haochuan9421/urm
 const urm = require("@haochuan9421/urm");
 
 (async () => {
-  // 获取 URM 封装的包管理器 (package manager) 实例
+  // Get an instance of the package manager packaged by URM
   const npmConfig = urm.pmConfig.getPmConfig("npm"); // choices "npm", "yarn", "yarn2"
-  // 查看包管理器当前的 registry 配置，以数组的格式返回
+  // Get the current registry configuration of the package manager
   const curRegistries = await npmConfig.getCurRegistries();
-  // 设置包管理器的 registry 配置
+  // Set the registry configuration of the package manager
   await npmConfig.setRegistry("@vant", "https://registry.nlark.com/", { whereType: "project" });
-  // 删除包管理器的 registry 配置
+  // Delete the registry configuration of the package manager
   await npmConfig.delRegistry("@vant", { whereType: "project" });
-  // 清除包管理器的全部 registry 配置
+  // Clear all registry configurations of the package manager
   await npmConfig.clearRegistry();
 })();
 ```
 
-具体可以参考 `lib/pm-config` 文件夹，不同的包管理器在方法的实现上不尽相同，但是实现的接口都是一样的，这有利于后续支持其他的包管理器。
+View `lib/pm-config` for more detail, Different package managers are not the same in the method implementation, but the interfaces implemented are the same, which is conducive to the subsequent support of other package managers
 
 ## Star History
 
