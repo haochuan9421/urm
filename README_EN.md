@@ -192,13 +192,13 @@ const urm = require("@haochuan9421/urm");
 (async () => {
   // Get an instance of the package manager packaged by URM
   const npmConfig = urm.pmConfig.getPmConfig("npm"); // choices "npm", "yarn", "yarn2"
-  // Get the current registry configuration of the package manager
+  // Get the current registry config of the package manager
   const curRegistries = await npmConfig.getCurRegistries();
-  // Set the registry configuration of the package manager
+  // Set the registry config of the package manager
   await npmConfig.setRegistry("@vant", "https://registry.nlark.com/", { whereType: "project" });
-  // Delete the registry configuration of the package manager
+  // Delete the registry config of the package manager
   await npmConfig.delRegistry("@vant", { whereType: "project" });
-  // Clear all registry configurations of the package manager
+  // Clear all registry configs of the package manager
   await npmConfig.clearRegistry();
 })();
 ```
