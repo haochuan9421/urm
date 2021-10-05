@@ -1,6 +1,6 @@
 # urm (Universal Registry Manager)
 
-> 更轻松的 [registry](https://docs.npmjs.com/misc/registry/) 配置管理小工具, 支持多种包管理器（[npm](https://www.npmjs.com/)、[yarn](https://classic.yarnpkg.com/)、[berry](https://yarnpkg.com/)），为多项目和多 [scope](https://docs.npmjs.com/misc/scope/) 而设计。
+> 通用的 [registry](https://docs.npmjs.com/misc/registry/) 配置管理工具, 支持多种包管理器（[npm](https://www.npmjs.com/)、[yarn](https://classic.yarnpkg.com/)、[berry](https://yarnpkg.com/)），为多项目和多 [scope](https://docs.npmjs.com/misc/scope/) 而设计。
 
 <p align="center">
     <a href="https://www.npmjs.com/package/@haochuan9421/urm" target="_blank"><img src="https://img.shields.io/npm/v/@haochuan9421/urm.svg?style=flat-square" alt="Version"></a>
