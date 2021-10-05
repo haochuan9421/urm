@@ -10,7 +10,8 @@
   "files": [
     "postinstall.js",
     "cli/",
-    "lib/"
+    "lib/",
+    "locales/"
   ],
   "scripts": {
     "postinstall": "husky install",
