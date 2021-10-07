@@ -43,7 +43,7 @@ $ urm unset
 
 > <a href="https://user-images.githubusercontent.com/5093611/135905978-1526cec6-a11c-4ce7-9823-910bf09874a2.png" target="_blank">一张图带你了解 URM 的使用</a>
 
-> <a href="" target="_blank">一个视频带你了解 URM 的使用</a>
+> <a href="https://www.bilibili.com/video/BV1x44y1t7qv" target="_blank">一个视频带你了解 URM 的使用</a>
 
 ### 包管理器（npm、yarn...）的 registry 配置
 

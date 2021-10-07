@@ -43,7 +43,7 @@ $ urm unset
 
 > <a href="https://user-images.githubusercontent.com/5093611/135977909-e23b3085-1031-4ad9-9571-086fda6d7376.png" target="_blank">One picture takes you to understand the use of URM</a>
 
-> <a href="" target="_blank">One video takes you to understand the use of URM</a>
+> <a href="https://www.bilibili.com/video/BV1x44y1t7qv" target="_blank">One video takes you to understand the use of URM</a>
 
 ### The registry config of the package manager（npm、yarn...）
 
