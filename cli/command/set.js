@@ -63,7 +63,7 @@ module.exports = (program) => {
         ]);
         name = answers.name || name;
         scope = answers.scope || scope;
-        where = answers.where || where;
+        where = answers.where || { whereType: where };
 
         const value = availableRegistries.find((availableRegistry) => availableRegistry.name === name).registry;
         await pmConfig.setRegistry(scope, value, where);
