@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const { getUrmConfig, setUrmConfig } = require("./lib/utils");
-const { presetRegistries } = require("./lib/const");
+const { presetRegistries, urmRcFile } = require("./lib/const");
 
 // npm scripts 中的 postinstall 既会在我们安装项目依赖时执行，也会在用户安装 urm 时执行，但我们预期的行为是：
 // 1. 本地开发时，为了做 eslint，安装项目依赖后需要执行 “husky install” 以激活 git hooks，但用户安装 urm 时不需要这个功能。
@@ -46,4 +46,8 @@ if (toogle) {
   const urmConfig = getUrmConfig();
   urmConfig.presetRegistries = presetRegistries;
   setUrmConfig(urmConfig);
+
+  if (process.platform !== "win32" && process.getuid && process.getuid() === 0) {
+    fs.chmod(urmRcFile, 0o664, () => {});
+  }
 }
