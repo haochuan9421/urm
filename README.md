@@ -25,6 +25,7 @@ npm i -g @haochuan9421/urm
 # 或
 yarn global add @haochuan9421/urm
 ```
+> 安装太慢？`npm i -g @haochuan9421/urm --registry https://registry.nlark.com/`
 
 ## 快速入手
 
